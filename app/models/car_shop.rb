@@ -1,0 +1,2 @@
+class CarShop < ApplicationRecord
+end
