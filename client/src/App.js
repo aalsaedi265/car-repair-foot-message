@@ -1,15 +1,18 @@
 import './App.css';
 import { createTheme,ThemeProvider } from '@mui/material/styles';
 
+import React,{useState} from 'react'
+import {Route, Routes } from "react-router-dom";
+
 import Login from './components/Login'
 import SelNavBar from './components/SelNavBar'
-import massage from './components/massage';
-import payment from './components/payment'
-import carShop from './components/carShop'
+import Massage from './components/massage';
+import Payment from './components/payment'
+import CarShop from './components/carShop'
 
 function App() {
 
-
+  const [pin, setPin]=useState(null)
 
   const theme = createTheme({
     palette: {
@@ -37,7 +40,18 @@ function App() {
     <div className="App">
       <ThemeProvider theme ={theme}>
 
-      <Login/>
+      <Routes>
+
+        <Route exact path='/' element={<Login setPin={setPin}/> }/>
+
+        <Route exact path='/massage' element={<Massage/>} />
+
+        <Route exact path='/carshop' element={<CarShop/>} />
+
+        <Route exact path='/payment' element={<Payment/>} />
+
+      </Routes>
+
       </ThemeProvider>
     </div>
   );
