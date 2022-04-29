@@ -40,6 +40,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme ={theme}>
 
+        <SelNavBar/>
       <Routes>
 
         <Route exact path='/' element={<Login setPin={setPin}/> }/>
