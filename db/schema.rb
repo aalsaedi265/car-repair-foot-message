@@ -12,30 +12,29 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_04_27_173821) do
   create_table "car_shops", force: :cascade do |t|
+    t.integer "user_id"
     t.float "price"
     t.string "server"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_car_shops_on_user_id"
   end
 
   create_table "massages", force: :cascade do |t|
-    t.string "pressure"
+    t.integer "user_id"
     t.string "oil"
     t.string "request"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_massages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.integer "password_digest"
-    t.integer "massage_id"
-    t.integer "car_shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["car_shop_id"], name: "index_users_on_car_shop_id"
-    t.index ["massage_id"], name: "index_users_on_massage_id"
   end
 
 end

@@ -1,22 +1,69 @@
-import react,{useState} from 'react'
+import React,{useState} from 'react'
 
-import {Link} from "react-router-dom"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 
 
 
+function Login ({login, user}){
 
-function Login ({setPin}){
+    const [press, setPress] =useState("")
+    const [error, setError] =useState("")
 
-    const [press, setPress] =useState(null)
+    function handleSubmit(e){
 
+      e.preventDefault()
+      fetch('/login',{
+
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body :JSON.stringify({press})
+
+      })
+      .then(response =>{
+        if (response.ok){
+          response.json()
+          .then(data=> login(data))
+        }else{
+          response.json()
+          .catch( err =>{
+            setError("wrong number, try again")
+          })
+        }
+      })
+    
+
+    }
+
+    let num=[...Array(9).keys()]
+
+    let btns= num.map(btn=> {
+
+      return (
+      
+      // <Box m={1} pt={2}>
+      <Button onClick={e=> setPress([...press,e.target.value].join('') )}
+      variant="contained" size="small" color="primary" value={btn} >{btn}</Button>
+              // {/* </Box> */}
+      )
+    })
+
+  
     return (
+
+      // {pin? (image code)
+      // :(will redner the login in code)}
+
+
         <>
 
         <h1 className="title">Welcome to Lucious's Carshop and Foot Massage</h1>
-        <form >
+
+
+        <form  onSubmit={handleSubmit}>
 
         <TextField
          id="outlined-number"
@@ -29,42 +76,12 @@ function Login ({setPin}){
         onChange={e=> setPress(e.target.value)}
         />
 
+        <p className="error">{error}</p>
+
         <div id="buttonContainer"> 
-    <Button
-        onClick={e=> setPress([...press,e.target.value].join('') )}
-        variant="contained" size="small" color="primary" value= {1}> 1 </Button>
+         
+       {btns}
 
-    <Button 
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value={2}> 2 </Button>
-
-    <Button 
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value= {3}> 3 </Button> 
-
-    <Button
-    onClick={e=> setPress([...press,e.target.value].join(''))  }
-    variant="contained" size="small" color="primary" value={4} > 4 </Button> 
-
-    <Button 
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value={5} > 5 </Button> 
-
-    <Button
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value={6} > 6 </Button> 
-
-    <Button 
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value={7} > 7 </Button> 
-
-    <Button
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value= {8}> 8 </Button> 
-
-    <Button 
-    onClick={e=> setPress([...press,e.target.value].join(''))}
-    variant="contained" size="small" color="primary" value= {9}> 8 </Button> 
 
     </div>
 
@@ -81,13 +98,12 @@ function Login ({setPin}){
         <img  src="https://powellframeandcollision.net/wp-content/uploads/2018/04/autosmall-homepage.jpg" alt="strong arms"/>
         <p> These hands will take care of you</p>
 
-        <Button type="button" variant="contained" size="large" color="secondary">
-          <a href="/massage">Massage</a>
+        <Button href="/massage" type="button" variant="contained" size="large" color="secondary">
+          Massage
         </Button>
-
-          <Link to= "/carshop"> 
-             <Button type="buton" variant="contained" size="large" color="secondary"> car shop  </Button> 
-          </Link>
+        
+         <Button href="/carshop" className="btn" type="buton" variant="contained" size="large" color="secondary"> car shop  </Button> 
+          
        
             </>
 
