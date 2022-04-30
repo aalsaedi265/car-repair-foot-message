@@ -14,7 +14,16 @@ import CarShop from './components/carShop'
 function App() {
 
   const [user, setUser]=useState("")
-  const [cost, setCost]=useState("")
+  const [cost, setCost]=useState(0)
+
+  function handleAdd(add){
+    setCost( cost+parseFloat(add.target.value))
+  }
+  function handleSubtract(neg){
+    if ( cost >0){
+      setCost( cost-neg)
+    }
+  }
 
   useEffect(() => {
     fetch('/me')
@@ -65,9 +74,9 @@ function login(x){
 
         <Route exact path='/' element={<Login user={user} login={login}/> }/>
 
-        <Route exact path='/massage' element={<Massage setCost={setCost}/>} />
+        <Route exact path='/massage' element={<Massage add={handleAdd} subtract={handleSubtract}/>} />
 
-        <Route exact path='/carshop' element={<CarShop setCost={setCost} />} />
+        <Route exact path='/carshop' element={<CarShop add={handleAdd} subtract={handleSubtract} />} />
 
         <Route exact path='/payment' element={<Payment cost={cost} />} />
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function carshop(){
+function carshop({add,subtract}){
 
     return(<></>)
 }

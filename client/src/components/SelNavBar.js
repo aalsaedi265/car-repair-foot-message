@@ -47,7 +47,7 @@ function handleLogout() {
           <Button href="/carshop" color="inherit"> CarShop</Button>
           
           </Typography>
-           the total cost so far {cost}
+           the total cost so far ${cost}
         </Toolbar>
       </AppBar>
     </Box>
