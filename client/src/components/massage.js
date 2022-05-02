@@ -7,14 +7,23 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+
+
 
 function massage({add,subtract}){
 
 
+
+
+
     return (
 
-        <>
-        <h1>Fix that body</h1>
+        <div>
+        <h1> Body </h1>
+
+      <form>
 
         <div className="oil">
     <Card className="card" sx={{ maxWidth: 345 }}>
@@ -33,8 +42,8 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-        <Button variant="contained" size="small">add</Button>
-        <Button variant="contained" size="small"> remove</Button>
+      <Button value={5}  onClick={add} variant="contained" size="small">add</Button>
+        <Button value={5} onClick={subtract} variant="contained" size="small"> remove</Button>
      
     </Card>
 
@@ -54,8 +63,8 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-        <Button value={4}  onClick={add}variant="contained" size="small">add</Button>
-        <Button variant="contained" size="small"> remove</Button>
+        <Button value={4}  onClick={add} variant="contained" size="small">add</Button>
+        <Button value={4} onClick={subtract} variant="contained" size="small"> remove</Button>
      
     </Card>
 
@@ -71,13 +80,12 @@ function massage({add,subtract}){
           Bring fomr Home
         </Typography>
         <Typography  variant="body2" >
-          Bring you'er own lubricant to minmize friction $0.00. You bring it and our team will use it, no questions asked (unless smells bad.)
+          Bring you'er own lubricant to minmize friction $0.00.
         </Typography>
       </CardContent>
       
-        <Button variant="contained" size="small">add</Button>
-        <Button variant="contained" size="small"> remove</Button>
-     
+      <Button variant="contained" size="small"> From Home </Button>
+
     </Card>
 
     <Card className="card" sx={{ maxWidth: 345 }}>
@@ -96,16 +104,34 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-        <Button variant="contained" size="small">add</Button>
-        <Button variant="contained" size="small"> remove</Button>
+      <Button value={10}  onClick={add} variant="contained" size="small">add</Button>
+        <Button value={10} onClick={subtract} variant="contained" size="small"> remove</Button>
      
     </Card>
 
     </div>
         
     
+      <div className="request">
+     
+        <TextField
+          className="inputeRequest"
+          id="outlined-multiline-flexible"
+          label="request"
+          multiline
+          rows={5}
+          style ={{width: '45%'}}
+          color="secondary"
+        />
+       
+        </div>
+        <Button type="submit" variant="contained" size="medium"> Submit Request</Button>
+        
 
-        </>
+        </form>
+       
+    </div>
+
 
     )
 }

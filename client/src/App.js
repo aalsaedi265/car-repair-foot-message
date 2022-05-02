@@ -17,12 +17,12 @@ function App() {
   const [cost, setCost]=useState(0)
 
   function handleAdd(add){
-    setCost( cost+parseFloat(add.target.value))
-  }
-  function handleSubtract(neg){
-    if ( cost >0){
-      setCost( cost-neg)
+
+    if (cost >= 0) setCost( cost+parseFloat(add.target.value))
     }
+    
+  function handleSubtract(x){
+  if (cost > 0) setCost(cost-parseFloat(x.target.value))
   }
 
   useEffect(() => {
