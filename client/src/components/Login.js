@@ -3,8 +3,7 @@ import React,{useState} from 'react'
 import './login.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+
 
 
 
@@ -17,7 +16,7 @@ function Login ({login, user}){
     function handleSubmit(e){
 
       e.preventDefault()
-      fetch('/login',{
+      fetch('http://localhost:3000/login',{
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -55,7 +54,7 @@ function Login ({login, user}){
   
     return (
 
-      // {pin? (image code)
+      // {user? (image code)
       // :(will redner the login in code)}
 
 
