@@ -43,7 +43,7 @@ function handleLogout() {
           <Button 
           // href="/" when  the login in works delet it beasue it will outamticialy redirects to home
           href="/"
-          onclick={handleLogout}
+          onClick={handleLogout}
           color="inherit">Logout</Button>
           <Button href="/massage" color="inherit"> Massage </Button>
           <Button href="/carshop" color="inherit"> CarShop</Button>

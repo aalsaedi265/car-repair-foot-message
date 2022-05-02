@@ -13,7 +13,7 @@ import CarShop from './components/carShop'
 
 function App() {
 
-  const [user, setUser]=useState("")
+  const [user, setUser]=useState('')
   const [cost, setCost]=useState(0)
 
   function handleAdd(add){
@@ -49,7 +49,7 @@ function App() {
       //baige like my car
     }
   });
-//will use pin to give access to 
+//will use user to give access to 
 //massage and car shop using ternary
 
 function logout(){
@@ -57,6 +57,7 @@ function logout(){
 }
 function login(x){
   setUser(x)
+  // setUser(parseInt(x))
 }
 
   return (
