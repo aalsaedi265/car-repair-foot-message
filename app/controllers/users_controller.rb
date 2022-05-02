@@ -17,6 +17,15 @@ class UsersController < ApplicationController
             render json: @current_user, status: 200
         end
 
+        def massage
+            render json: @current_user, serializer: UserWithMassageSerializer, status: 200
+        end
+
+
+        def carshop
+            redner json: @current_user, serializer: UserWithCarShopSerializer, status: 200
+        end
+
         private
 
         

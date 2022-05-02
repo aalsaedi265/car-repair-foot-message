@@ -1,0 +1,16 @@
+
+.sub{
+    padding: 30px
+}
+#buttonContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: none;
+    gap: 1.5rem;
+
+    width: 20%;
+    margin-left: 41rem
+} 
+.btn{
+    
+}

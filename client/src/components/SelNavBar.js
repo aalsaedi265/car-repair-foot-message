@@ -41,13 +41,16 @@ function handleLogout() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           
           <Button 
+          // href="/" when  the login in works delet it beasue it will outamticialy redirects to home
+          href="/"
           onclick={handleLogout}
           color="inherit">Logout</Button>
           <Button href="/massage" color="inherit"> Massage </Button>
           <Button href="/carshop" color="inherit"> CarShop</Button>
-          
+          <Button href="/payment" color="inherit"> CheckOut</Button>
+
           </Typography>
-           the total cost so far {cost}
+           the total cost so far ${cost}
         </Toolbar>
       </AppBar>
     </Box>
