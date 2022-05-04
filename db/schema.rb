@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_173821) do
   create_table "car_shops", force: :cascade do |t|
     t.integer "user_id"
     t.float "price"
-    t.string "server"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_car_shops_on_user_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_173821) do
 
   create_table "massages", force: :cascade do |t|
     t.integer "user_id"
-    t.string "oil"
+    t.string "name"
     t.string "request"
     t.float "price"
     t.datetime "created_at", null: false

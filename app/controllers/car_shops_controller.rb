@@ -2,6 +2,7 @@ class CarShopsController < ApplicationController
 
 
     def index
+        
         render json:CarShop.all
     end
 

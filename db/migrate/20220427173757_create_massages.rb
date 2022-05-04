@@ -3,7 +3,7 @@ class CreateMassages < ActiveRecord::Migration[7.0]
     create_table :massages do |t|
       # t.integer :id
       t.belongs_to :user
-      t.string :oil
+      t.string :name 
       t.string :request
       t.float :price
       t.timestamps

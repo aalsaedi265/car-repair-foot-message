@@ -1,0 +1,3 @@
+
+
+Stripe.api_key="sk_test_51Kvjm1HCgzaQFbfzW2oVe8a1vQ3HpG6qH6AtHhCL1yu63cHLNSQSZIs9uFCLbOapV778GHZyEZtjBY4chOtfdh5Q003mHsopwS"

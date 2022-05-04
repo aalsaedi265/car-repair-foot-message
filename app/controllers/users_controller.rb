@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
-        skip_before_action :authorize, only :create
+    skip_before_action :authorize, only: :create
+
 
         def index
             render json: User.all
@@ -17,6 +18,9 @@ class UsersController < ApplicationController
             render json: @current_user, status: 200
         end
 
+
+
+
         def massage
             render json: @current_user, serializer: UserWithMassageSerializer, status: 200
         end
@@ -28,6 +32,9 @@ class UsersController < ApplicationController
 
         private
 
+         def authorize
+         render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+          end
         
         def render_not_found
             render json: {error: "the employee"}, status: :not_found
