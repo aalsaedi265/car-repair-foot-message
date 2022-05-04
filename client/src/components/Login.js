@@ -16,14 +16,15 @@ function Login ({login, user}){
     function handleSubmit(e){
 
       e.preventDefault()
-      fetch('http://localhost:3000/login',{
-
+      
+      fetch('/login',{
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body :JSON.stringify({press})
+        headers: {"Content-Type" : "application/json"},
+        body :JSON.stringify(press) 
+    })
 
-      })
       .then(response =>{
+        
         if (response.ok){
           response.json()
           .then(data=> login(data))

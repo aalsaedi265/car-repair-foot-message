@@ -60,6 +60,30 @@ function login(x){
   // setUser(parseInt(x))
 }
 
+
+fetch('/car_shops')
+.then(response => response.json().then(d=> console.log(d) ) )
+
+
+const[name, setName]=useState('')
+const[request, setRequest]=useState('')
+const[price, setPirce]=useState(0)
+
+
+  function dataString(e){
+    setName( e.target.name )
+  }
+  function dataAddNumber(e){
+    setPirce( cost+ parseFloat( e.target.value) )
+  }
+  function dataSubNumber(e){
+    if ( cost >0) setPirce( cost- parseFloat( e.target.value) )
+  }
+  function dataRequest(e){
+    setRequest( e.target.value )
+  }
+
+
   return (
 
 
@@ -75,11 +99,11 @@ function login(x){
 
         <Route exact path='/' element={<Login user={user} login={login}/> }/>
 
-        <Route exact path='/massage' element={<Massage add={handleAdd} subtract={handleSubtract}/>} />
+        <Route exact path='/massage' element={<Massage price={price} request={request} name={name} dataString={dataString} dataRequest={dataRequest} dataSubNumber={dataSubNumber} dataAddNumber={dataAddNumber} add={handleAdd} cost={cost} subtract={handleSubtract}/>} />
 
-        <Route exact path='/carshop' element={<CarShop add={handleAdd} subtract={handleSubtract} />} />
+        <Route exact path='/carshop' element={<CarShop service={dataString} priceAdd={dataAddNumber} priceSubtract={dataSubNumber} price={price} name={name} add={handleAdd} cost={cost} subtract={handleSubtract} />} />
 
-        <Route exact path='/payment' element={<Payment cost={cost} />} />
+        <Route exact path='/payment' element={<Payment name={name} request={request} cost={cost} />} />
 
       </Routes>
 

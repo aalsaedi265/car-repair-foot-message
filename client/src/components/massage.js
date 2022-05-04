@@ -1,5 +1,5 @@
 
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
 
 import "./massage.css";
 import Card from '@mui/material/Card';
@@ -8,15 +8,29 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+
+
+function Massage({price,request,name,dataRequest,dataSubNumber,dataAddNumber,add,subtract,cost,dataString}){
 
 
 
-function massage({add,subtract}){
+  function handleSubmit(e){
+    e.preventDefault()
 
-
-
-
+  //   fetch("/massages",{
+  //     method: "POST",
+  //     headers:{
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(newMassage)
+  //   }).then(response => response.json() )
+  //   .then( () => {
+  //     fetch('/me/massage')
+  //       .then( resp => resp.json() )
+  //       .then( data => setNewMassage(data) )
+      
+  //   })
+  }
 
     return (
 
@@ -42,8 +56,21 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-      <Button value={5}  onClick={add} variant="contained" size="small">add</Button>
-        <Button value={5} onClick={subtract} variant="contained" size="small"> remove</Button>
+      <Button value={5} name="Aragon oil" 
+       onClick={(e)=>{
+        add(e)
+        dataAddNumber(e)
+        dataString(e)
+      }} 
+      variant="contained" size="small">add</Button>
+
+        <Button value={5} name="none" 
+        onClick={(e)=>{
+          dataSubNumber(e)
+          subtract(e)
+          dataString(e)
+        }} 
+        variant="contained" size="small"> remove</Button>
      
     </Card>
 
@@ -63,8 +90,22 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-        <Button value={4}  onClick={add} variant="contained" size="small">add</Button>
-        <Button value={4} onClick={subtract} variant="contained" size="small"> remove</Button>
+        <Button value={4} 
+        
+        onClick={(e)=>{
+          add(e)
+          dataAddNumber(e)
+          dataString(e)
+        }} 
+        
+        variant="contained" name="Coconut Lotion" size="small">add</Button>
+        <Button value={4}
+            onClick={(e)=>{
+              dataSubNumber(e)
+              subtract(e)
+              dataString(e)
+            }}  
+         variant="contained" size="small"> remove</Button>
      
     </Card>
 
@@ -84,7 +125,12 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-      <Button variant="contained" size="small"> From Home </Button>
+      <Button 
+        onClick={()=>{
+          dataString('brough from home')
+        }}
+      
+        variant="contained" size="small"> From Home </Button>
 
     </Card>
 
@@ -104,30 +150,43 @@ function massage({add,subtract}){
         </Typography>
       </CardContent>
       
-      <Button value={10}  onClick={add} variant="contained" size="small">add</Button>
-        <Button value={10} onClick={subtract} variant="contained" size="small"> remove</Button>
+      <Button value={10}  name="synthetic engine oil"
+          onClick={(e)=>{
+            add(e)
+            dataAddNumber(e)
+            dataString(e)
+          }} 
+      variant="contained" size="small">add</Button>
+        <Button value={10}
+           onClick={(e)=>{
+            dataSubNumber(e)
+            subtract(e)
+            dataString(e)
+          }} 
+          variant="contained" size="small"> remove</Button>
      
     </Card>
 
     </div>
         
-    
-      <div className="request">
+      <div >
      
         <TextField
           className="inputeRequest"
-          id="outlined-multiline-flexible"
+          name="outlined-multiline-flexible"
           label="request"
           multiline
           rows={5}
           style ={{width: '45%'}}
           color="secondary"
+          id="request"
+          onChange={dataRequest}
         />
        
         </div>
+
         <Button type="submit" variant="contained" size="medium"> Submit Request</Button>
         
-
         </form>
        
     </div>
@@ -136,4 +195,4 @@ function massage({add,subtract}){
     )
 }
 
-export default massage
+export default Massage
