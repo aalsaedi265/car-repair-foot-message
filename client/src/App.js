@@ -14,15 +14,19 @@ import CarShop from './components/carShop'
 function App() {
 
   const [user, setUser]=useState('')
-  const [cost, setCost]=useState(0)
+  const [cost, setCost]=useState([])
+
+    const[name, setName]=useState('')
+    const[request, setRequest]=useState('')
+    const[price, setPirce]=useState(0)
 
   function handleAdd(add){
 
-    if (cost >= 0) setCost( cost+parseFloat(add.target.value))
+    if (price >= 0) setPirce( price+parseFloat(add.target.value))
     }
     
   function handleSubtract(x){
-  if (cost > 0) setCost(cost-parseFloat(x.target.value))
+  if (price > 0) setPirce(price-parseFloat(x.target.value))
   }
 
   useEffect(() => {
@@ -60,24 +64,14 @@ function login(x){
   // setUser(parseInt(x))
 }
 
-
-fetch('/car_shops')
-.then(response => response.json().then(d=> console.log(d) ) )
-
-
-const[name, setName]=useState('')
-const[request, setRequest]=useState('')
-const[price, setPirce]=useState(0)
-
-
   function dataString(e){
     setName( e.target.name )
   }
   function dataAddNumber(e){
-    setPirce( cost+ parseFloat( e.target.value) )
+    setPirce( price+ parseFloat( e.target.value) )
   }
   function dataSubNumber(e){
-    if ( cost >0) setPirce( cost- parseFloat( e.target.value) )
+    if ( price >0) setPirce( price- parseFloat( e.target.value) )
   }
   function dataRequest(e){
     setRequest( e.target.value )
@@ -94,16 +88,16 @@ const[price, setPirce]=useState(0)
     <div className="App">
       <ThemeProvider theme ={theme}>
 
-        <SelNavBar user={user} logout={logout} cost={cost} />
+        <SelNavBar user={user} logout={logout} cost={price} />
       <Routes>
 
         <Route exact path='/' element={<Login user={user} login={login}/> }/>
 
-        <Route exact path='/massage' element={<Massage price={price} request={request} name={name} dataString={dataString} dataRequest={dataRequest} dataSubNumber={dataSubNumber} dataAddNumber={dataAddNumber} add={handleAdd} cost={cost} subtract={handleSubtract}/>} />
+        <Route exact path='/massage' element={<Massage  setCost={setCost} price={price} request={request} name={name} dataString={dataString} dataRequest={dataRequest} dataSubNumber={dataSubNumber} dataAddNumber={dataAddNumber} add={handleAdd} subtract={handleSubtract}/>} />
 
-        <Route exact path='/carshop' element={<CarShop service={dataString} priceAdd={dataAddNumber} priceSubtract={dataSubNumber} price={price} name={name} add={handleAdd} cost={cost} subtract={handleSubtract} />} />
+        <Route exact path='/carshop' element={<CarShop setCost={setCost} service={dataString} priceAdd={dataAddNumber} priceSubtract={dataSubNumber} price={price} name={name} add={handleAdd} subtract={handleSubtract} />} />
 
-        <Route exact path='/payment' element={<Payment name={name} request={request} cost={cost} />} />
+        <Route exact path='/payment' element={<Payment cost={cost} />} />
 
       </Routes>
 
@@ -111,5 +105,4 @@ const[price, setPirce]=useState(0)
     </div>
   );
 }
-
 export default App;

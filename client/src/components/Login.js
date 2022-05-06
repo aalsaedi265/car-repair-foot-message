@@ -12,6 +12,7 @@ function Login ({login, user}){
 
     const [press, setPress] =useState("")
     const [error, setError] =useState("")
+    const [userName, setUserName] = useState("")
 
     function handleSubmit(e){
 
@@ -20,7 +21,11 @@ function Login ({login, user}){
       fetch('/login',{
         method: 'POST',
         headers: {"Content-Type" : "application/json"},
-        body :JSON.stringify(press) 
+        body :JSON.stringify({
+
+        full_name : userName,
+          password : press
+        }) 
     })
 
       .then(response =>{
@@ -46,8 +51,13 @@ function Login ({login, user}){
       return (
       
       // <Box m={1} pt={2}>
-      <Button className="btn" onClick={e=> setPress([...press,e.target.value].join('') )}
-      variant="contained" size="large" color="primary" value={btn} >{btn}</Button>
+      <Button className="btn" onClick={e=> {
+        setPress([...press,e.target.value].join('') )
+      
+      }}
+
+      variant="contained" 
+      size="large" color="primary" value={btn} >{btn}</Button>
               // {/* </Box> */}
       )
     })
@@ -62,9 +72,11 @@ function Login ({login, user}){
         <>
 
         <h1 className="title">Welcome to Lucious's Carshop and Foot Massage</h1>
+        
 
 
         <form  onSubmit={handleSubmit}>
+          <input value={userName} onChange={(e) => setUserName(e.target.value)}></input>
 
 
         <TextField

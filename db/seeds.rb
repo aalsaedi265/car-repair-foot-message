@@ -15,15 +15,15 @@ CarShop.destroy_all
 
 puts "user data"
 
-u1 =User.create(full_name: "Ashley", password_digest:12345)
+u1 =User.create(full_name: "Ashley", password:"1", password_confirmation: "1")
 
-u2=  User.create(full_name: "Acaicia", password_digest:56789)
+u2=  User.create(full_name: "Acaicia",password:"2", password_confirmation: "2")
 
-u3= User.create(full_name: "Raven", password_digest:22222)
+u3= User.create(full_name: "Raven", password:"3", password_confirmation: "3")
 
-u4= User.create(full_name: "Emily", password_digest:19285)
+u4= User.create(full_name: "Emily", password:"4", password_confirmation: "4")
 
-u5= User.create(full_name: "Julia", password_digest:11111)
+u5= User.create(full_name: "Julia", password:"5", password_confirmation: "5")
 
 
 puts "massage data"

@@ -10,26 +10,30 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
 
-function Massage({price,request,name,dataRequest,dataSubNumber,dataAddNumber,add,subtract,cost,dataString}){
+function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddNumber,add,subtract,cost,dataString}){
 
 
 
   function handleSubmit(e){
     e.preventDefault()
 
-  //   fetch("/massages",{
-  //     method: "POST",
-  //     headers:{
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(newMassage)
-  //   }).then(response => response.json() )
-  //   .then( () => {
-  //     fetch('/me/massage')
-  //       .then( resp => resp.json() )
-  //       .then( data => setNewMassage(data) )
+    fetch("/massages",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        request: request,
+        price: price
+      })
+    }).then(response => response.json() )
+    .then( () => {
+      fetch('/me/massage')
+        .then( resp => resp.json() )
+        .then( data => setCost(data) )
       
-  //   })
+    })
   }
 
     return (
@@ -37,7 +41,7 @@ function Massage({price,request,name,dataRequest,dataSubNumber,dataAddNumber,add
         <div>
         <h1> Body </h1>
 
-      <form>
+      <form onSubmit={handleSubmit}>
 
         <div className="oil">
     <Card className="card" sx={{ maxWidth: 345 }}>
