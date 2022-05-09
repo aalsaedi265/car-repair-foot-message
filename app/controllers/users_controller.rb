@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
-    # skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: :create
 
 
         def index
@@ -26,11 +26,19 @@ class UsersController < ApplicationController
         end
 
 
-        def carshop
+        def car
             redner json: @current_user, serializer: UserWithCarShopSerializer, status: 200
         end
 
         private
+
+        def user_params
+            params.permit(:full_name, :password_digest)
+        end
+
+        def user_find
+            User.find_by(full_name: params[:full_name])
+        end
 
          def authorize
          render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id

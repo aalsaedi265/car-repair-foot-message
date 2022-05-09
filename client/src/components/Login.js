@@ -62,11 +62,9 @@ function Login ({login, user}){
       )
     })
 
+    //{user? will show nav and other pic: only show login no pic in the login}
   
     return (
-
-      // {user? (image code)
-      // :(will redner the login in code)}
 
 
         <>
@@ -76,7 +74,17 @@ function Login ({login, user}){
 
 
         <form  onSubmit={handleSubmit}>
-          <input value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+          <TextField 
+           id="outlined-number"
+           label="username"
+           type="text"
+           InputLabelProps={{
+             shrink: true,
+           }}
+          value={userName}
+           onChange={(e) => setUserName(e.target.value)}
+           style={{margin:'10px'}}
+           />
 
 
         <TextField
@@ -110,6 +118,7 @@ function Login ({login, user}){
 
       
             <>
+            
         <h1> Here to Fix you'er Body or Car</h1>
 
         <img  src="https://powellframeandcollision.net/wp-content/uploads/2018/04/autosmall-homepage.jpg" alt="strong arms"/>

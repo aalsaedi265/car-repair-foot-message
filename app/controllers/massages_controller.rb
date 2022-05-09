@@ -12,12 +12,12 @@ class MassagesController < ApplicationController
 
     def update
         # massage = Massage.find(params[:id])
-        massage= @current_user.massages.update!(massage_params)
+        massage= @current_user.Massage.update!(massage_params)
         render json: massage, status: 200
     end
 
     def create    
-        massage= @current_user.massages.create!(massage_params)
+        massage= @current_user.Massage.create!(massage_params)
 
         render json: massage, status: 200
     end
@@ -28,12 +28,10 @@ class MassagesController < ApplicationController
         head :no_content
     end
 
-
     private
 
     def massage_params
-        params.permit(:user_id, :oil, :request, :price)
+        params.permit(:user_id, :name, :request,:price)
     end
-
 
 end

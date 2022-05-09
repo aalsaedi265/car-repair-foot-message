@@ -14,7 +14,7 @@ import CarShop from './components/carShop'
 function App() {
 
   const [user, setUser]=useState('')
-  const [cost, setCost]=useState([])
+  const [cost, setCost]=useState('')
 
     const[name, setName]=useState('')
     const[request, setRequest]=useState('')
@@ -29,11 +29,13 @@ function App() {
   if (price > 0) setPirce(price-parseFloat(x.target.value))
   }
 
+
   useEffect(() => {
-    fetch('/me')
+   fetch('http://localhost:3000/me')
     .then(response => response.json())
     .then(data => setUser(data) )
   },[])
+ 
 
   const theme = createTheme({
     palette: {
@@ -97,7 +99,7 @@ function login(x){
 
         <Route exact path='/carshop' element={<CarShop setCost={setCost} service={dataString} priceAdd={dataAddNumber} priceSubtract={dataSubNumber} price={price} name={name} add={handleAdd} subtract={handleSubtract} />} />
 
-        <Route exact path='/payment' element={<Payment cost={cost} />} />
+        {/* <Route exact path='/payment' element={<Payment cost={cost} />} /> */}
 
       </Routes>
 

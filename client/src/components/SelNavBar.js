@@ -18,7 +18,7 @@ function handleLogout() {
     }).then(() => logout());
   }
 
-
+console.log(user)
 
     return(
     
@@ -36,7 +36,7 @@ function handleLogout() {
 
           </IconButton>
 
-           <Typography>Get to Work {user.full_name} </Typography> 
+           <Typography>Get to Work {user? user.full_name:'' } </Typography> 
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           

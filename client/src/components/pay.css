@@ -1,0 +1,14 @@
+
+.sidePanel{
+    grid-area: panel;
+    display: flex;
+    flex-direction: column;
+
+    justify-items: center;
+    align-items: center;
+
+    border: 8px solid RGB(35, 82, 174);
+    border-radius: 20px;
+
+    width: 100%;
+}

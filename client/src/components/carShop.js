@@ -6,10 +6,38 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Payment from './payment'
 
 
-function Carshop({priceSubtract,priceAdd,service,price ,name,add,subtract,cost}){
+function Carshop({setCost,priceSubtract,priceAdd,service,price ,name,add,subtract,cost}){
 
+  function handleSubmit(e){
+    e.preventDefault()
+
+    fetch("/massages",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        price: price
+      })
+    }).then(response => response.json() )
+    .then( () => {
+      fetch('/me/carshop')
+        .then( resp => resp.json() )
+        .then( data => setCost(data) )
+      
+    })
+  }
+
+  useEffect(()=>{
+    fetch('/me/carshop')
+    .then(resp => resp.json() )
+    .then(data=> setCost(data) )
+  },[])
+  
  
 
     return(
@@ -264,6 +292,8 @@ function Carshop({priceSubtract,priceAdd,service,price ,name,add,subtract,cost})
         <Button type="submit" variant="contained" size="large"> Submit Request</Button>
         </div>
     </form>
+
+    <Payment price={price}/>
     </>)
 }
 

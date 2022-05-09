@@ -8,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import Payment from './payment'
 
 
 function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddNumber,add,subtract,cost,dataString}){
@@ -35,6 +36,12 @@ function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddN
       
     })
   }
+
+  useEffect(()=>{
+    fetch('/me/massage')
+    .then(resp => resp.json() )
+    .then(data=> setCost(data) )
+  },[])
 
     return (
 
@@ -193,9 +200,8 @@ function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddN
         
         </form>
        
+       <Payment price={price}/>
     </div>
-
-
     )
 }
 
