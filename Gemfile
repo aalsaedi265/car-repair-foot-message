@@ -3,7 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.4"
 
+# gem 'rack-cors'
 
+gem "net-http"
+#gem to rmove the dpency problm with server
 
 gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
 

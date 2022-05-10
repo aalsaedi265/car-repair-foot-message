@@ -13,12 +13,16 @@ class CarShopsController < ApplicationController
 
     def update
         # carshop = CarShop.find(params[:id])
-        carshop= @current_user.car_shops.update!(carshop_params)
+        user=User.find_by(full_name: params[:full_name])
+
+        carshop= user.CarShop.update!(carshop_params)
         render json: carshop, status: 200
     end
 
-    def create    
-        carshop= @current_user.car_shops.create!(car_params)
+    def create   
+        user=User.find_by(full_name: params[:full_name])
+        
+        carshop= user.CarShop.create!(car_params)
 
         render json: carshop, status: 200
     end

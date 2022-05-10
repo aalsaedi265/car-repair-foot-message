@@ -1,12 +1,8 @@
 import React,{useState} from 'react'
-
+import {Link} from "react-router-dom"
 import './login.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
-
-
-
 
 function Login ({login, user}){
 
@@ -20,7 +16,8 @@ function Login ({login, user}){
       
       fetch('/login',{
         method: 'POST',
-        headers: {"Content-Type" : "application/json"},
+        headers: {"Content-Type" : "application/json",
+                   "Accept" : "application/json"},
         body :JSON.stringify({
 
         full_name : userName,
@@ -50,7 +47,6 @@ function Login ({login, user}){
 
       return (
       
-      // <Box m={1} pt={2}>
       <Button className="btn" onClick={e=> {
         setPress([...press,e.target.value].join('') )
       
@@ -58,21 +54,36 @@ function Login ({login, user}){
 
       variant="contained" 
       size="large" color="primary" value={btn} >{btn}</Button>
-              // {/* </Box> */}
       )
     })
 
-    //{user? will show nav and other pic: only show login no pic in the login}
   
     return (
-
-
         <>
 
-        <h1 className="title">Welcome to Lucious's Carshop and Foot Massage</h1>
+      {user?(
+
+        <>
+          <h1> Here to Fix you'er Body or Car</h1>
+
+          <img  src="https://powellframeandcollision.net/wp-content/uploads/2018/04/autosmall-homepage.jpg" alt="strong arms"/>
+          <p> These hands will take care of you</p>
+
+          <Button type="button" variant="contained" size="large" color="secondary">
+              <Link to="/massage"> Massage </Link> 
+          </Button>
+
+          <Button  className="btn" type="buton" variant="contained" size="large" color="secondary">
+              <Link to="/carshop"> carshop </Link>
+          </Button> 
+  
+
+        </>
+      ):(
+
+        <>
+                <h1 className="title">Welcome to Lucious's Carshop and Foot Massage</h1>
         
-
-
         <form  onSubmit={handleSubmit}>
           <TextField 
            id="outlined-number"
@@ -114,24 +125,9 @@ function Login ({login, user}){
         </Button>
         </div>
    </form>
-  
+        </>
+      )}
 
-      
-            <>
-            
-        <h1> Here to Fix you'er Body or Car</h1>
-
-        <img  src="https://powellframeandcollision.net/wp-content/uploads/2018/04/autosmall-homepage.jpg" alt="strong arms"/>
-        <p> These hands will take care of you</p>
-
-        <Button href="/massage" type="button" variant="contained" size="large" color="secondary">
-          Massage
-        </Button>
-        
-         <Button href="/carshop" className="btn" type="buton" variant="contained" size="large" color="secondary"> car shop  </Button> 
-          
-       
-            </>
 
     </>
     )

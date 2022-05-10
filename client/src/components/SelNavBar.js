@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -41,13 +42,13 @@ console.log(user)
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           
           <Button 
-          // href="/" when  the login in works delet it beasue it will outamticialy redirects to home
-          href="/"
-          onClick={handleLogout}
-          color="inherit">Logout</Button>
-          <Button href="/massage" color="inherit"> Massage </Button>
-          <Button href="/carshop" color="inherit"> CarShop</Button>
-          <Button href="/payment" color="inherit"> CheckOut</Button>
+            onClick={handleLogout}
+            color="inherit">Logout</Button>
+
+          
+          <Button  color="inherit">  <Link to="/massage"> Massage </Link>  </Button>
+          <Button color="inherit">   <Link to="/carshop"> carshop </Link>  </Button>
+          <Button  color="inherit">  <Link to="/"> Home </Link>            </Button>
 
           </Typography>
            the total cost so far ${cost}
