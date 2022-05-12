@@ -61,7 +61,7 @@ function Login ({login, user}){
     return (
         <>
 
-      {user?(
+      {user.full_name?(
 
         <>
           <h1> Here to Fix you'er Body or Car</h1>

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get "/me/massage", to: "users#massage"
   get "/me/carshop", to: "users#car"
 
+  post "/me/carshop", to: "carshop#create"
+  post "/me/massage", to: "massage#create"
+
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end

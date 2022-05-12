@@ -10,7 +10,7 @@ class ChargesController < ApplicationController
               quantity: 1,
             }],
             mode: 'payment',
-            success_url: 'https://example.com/success',
+            success_url: 'http://localhost:3006/massage',
             cancel_url: 'https://example.com/cancel',
           })
     end

@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
 
     
-    protect_from_forgery with: :null_session
+    protect_from_forgery with: :reset_session
 
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     # before_action :authorize
   
@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
     #   render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
     # end
   
-    def render_unprocessable_entity_response(exception)
-      render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
-    end
+    # def render_unprocessable_entity_response(exception)
+    #   render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
+    # end
 
 end

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Payment from './payment'
 
 
-function Carshop({setCost,priceSubtract,priceAdd,service,price ,name,add,subtract,cost}){
+function Carshop({setCost,priceSubtract,priceAdd,service,price ,name,add,subtract,data,cost}){
 
   function handleSubmit(e){
     e.preventDefault()
@@ -38,7 +38,9 @@ function Carshop({setCost,priceSubtract,priceAdd,service,price ,name,add,subtrac
     .then(data=> setCost(data) )
   },[])
   
- 
+ function click(){
+   console.log('the world')
+ }
 
     return(
     
@@ -46,9 +48,8 @@ function Carshop({setCost,priceSubtract,priceAdd,service,price ,name,add,subtrac
     
     <h1>Car</h1>
 
-    <form>
+    <form onSubmit={handleSubmit}>
         <div className='oil'> 
-
     <Card className="card" sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
@@ -293,7 +294,7 @@ function Carshop({setCost,priceSubtract,priceAdd,service,price ,name,add,subtrac
         </div>
     </form>
 
-    <Payment price={price}/>
+    <Payment data={data} name={name} price={price}/>
     </>)
 }
 

@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import Payment from './payment'
 
 
-function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddNumber,add,subtract,cost,dataString}){
+function Massage({data, setCost, price,request,name,dataRequest,dataSubNumber,dataAddNumber,add,subtract,cost,dataString}){
 
 
 
@@ -28,7 +28,8 @@ function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddN
         request: request,
         price: price
       })
-    }).then(response => response.json() )
+    })
+    .then(response => response.json() )
     .then( () => {
       fetch('/me/massage')
         .then( resp => resp.json() )
@@ -40,9 +41,11 @@ function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddN
   useEffect(()=>{
     fetch('/me/massage')
     .then(resp => resp.json() )
-    .then(data=> setCost(data) )
+    
   },[])
 
+
+    
     return (
 
         <div>
@@ -199,8 +202,9 @@ function Massage({setCost, price,request,name,dataRequest,dataSubNumber,dataAddN
         <Button type="submit" variant="contained" size="medium"> Submit Request</Button>
         
         </form>
+        {/* <button onClick={data}>OOOOHHHHHHHHHHHHHHH</button> */}
        
-       <Payment price={price}/>
+       <Payment data={data}  name={name} price={price} />
     </div>
     )
 }

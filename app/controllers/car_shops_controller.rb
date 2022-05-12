@@ -1,6 +1,5 @@
 class CarShopsController < ApplicationController
 
-
     def index
         
         render json:CarShop.all
@@ -22,7 +21,7 @@ class CarShopsController < ApplicationController
     def create   
         user=User.find_by(full_name: params[:full_name])
         
-        carshop= user.CarShop.create!(car_params)
+        carshop= user.car_shops.create!(car_params)
 
         render json: carshop, status: 200
     end
@@ -39,5 +38,6 @@ class CarShopsController < ApplicationController
     def car_params
         params.permit(:user_id, :server, :price)
     end
+  
 
 end

@@ -18,9 +18,6 @@ function handleLogout() {
       method: "DELETE",
     }).then(() => logout());
   }
-
-console.log(user)
-
     return(
     
 

@@ -1,5 +1,5 @@
 class MassagesController < ApplicationController
-
+  
 
     def index
         render json:Massage.all
@@ -12,17 +12,18 @@ class MassagesController < ApplicationController
 
     def update
         # massage = Massage.find(params[:id])
-        user=User.find_by(full_name: params[:full_name])
+        # user=User.find_by(full_name: params[:full_name])
 
-        massage= user.Massage.update!(massage_params)
-        render json: massage, status: 200
+        # massage= user.Massage.update!(massage_params)
+        # render json: massage, status: 200
     end
 
-    def create    
-        user=User.find_by(full_name: params[:full_name])
+    def create   
 
-        massage= user.Massage.create!(massage_params)
 
+        user=User.find(session[:user_id])
+        massage =  user.massages.create!(massage_params)
+       
         render json: massage, status: 200
     end
 

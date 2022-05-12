@@ -55,15 +55,18 @@ function App() {
   });
 
 function logout(){
-  setUser(null)
+  setUser('')
 }
 function login(x){
   setUser(x)
-  // setUser(parseInt(x))
 }
 
   function dataString(e){
     setName( e.target.name )
+  }
+  function data(){
+    setPirce(0)
+    setName('')
   }
   function dataAddNumber(e){
     setPirce( price+ parseFloat( e.target.value) )
@@ -74,22 +77,22 @@ function login(x){
   function dataRequest(e){
     setRequest( e.target.value )
   }
-
+  
 
   return (
 
     <div className="App">
       <ThemeProvider theme ={theme}>
-      {user?(
+      {user.full_name?(
           <>
             <SelNavBar user={user} logout={logout} cost={price} />
       <Routes>
         
         <Route exact path='/' element={<Login user={user} login={login}/> }/>
 
-        <Route exact path='/massage' element={<Massage  setCost={setCost} price={price} request={request} name={name} dataString={dataString} dataRequest={dataRequest} dataSubNumber={dataSubNumber} dataAddNumber={dataAddNumber} add={handleAdd} subtract={handleSubtract}/>} />
+        <Route exact path='/massage' element={<Massage  setCost={setCost} price={price} request={request} name={name} dataString={dataString} dataRequest={dataRequest} dataSubNumber={dataSubNumber} cost={cost} dataAddNumber={dataAddNumber} add={handleAdd} subtract={handleSubtract} data={data}/>} />
 
-        <Route exact path='/carshop' element={<CarShop setCost={setCost} service={dataString} priceAdd={dataAddNumber} priceSubtract={dataSubNumber} price={price} name={name} add={handleAdd} subtract={handleSubtract} />} />
+        <Route exact path='/carshop' element={<CarShop setCost={setCost} service={dataString} priceAdd={dataAddNumber} priceSubtract={dataSubNumber} price={price} name={name} add={handleAdd} data={data} cost={cost} subtract={handleSubtract}  />} />
 
         {/* <Route exact path='/payment' element={<Payment cost={cost} />} /> */}
       </Routes>
@@ -98,6 +101,9 @@ function login(x){
         ):(
           <>
             <Login user={user} login={login}/>
+
+          
+            
           </>
         )}
       </ThemeProvider>
